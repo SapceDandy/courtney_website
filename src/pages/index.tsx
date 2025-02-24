@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
 
@@ -87,7 +88,7 @@ export default function Home() {
       setCurrentTagline((prev) => (prev + 1) % taglines.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [taglines.length]);
 
   return (
     <Layout>
@@ -144,12 +145,12 @@ export default function Home() {
             whileTap="tap"
             className="inline-block"
           >
-            <a
+            <Link
               href="/journey"
               className="inline-block bg-secondary text-white px-10 py-5 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-300"
             >
               Begin Your Journey
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -337,7 +338,7 @@ export default function Home() {
                   variants={buttonBounce}
                   className="inline-block"
                 >
-                  <a
+                  <Link
                     href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                     className="inline-flex items-center text-secondary font-semibold hover:text-primary transition-colors"
                   >
@@ -345,7 +346,7 @@ export default function Home() {
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </a>
+                  </Link>
                 </motion.div>
               </motion.div>
             ))}
@@ -460,12 +461,12 @@ export default function Home() {
             whileTap="tap"
             className="inline-block"
           >
-            <a
+            <Link
               href="/journey"
               className="inline-block bg-secondary text-white px-10 py-5 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-300"
             >
               Book Your Session Today
-            </a>
+            </Link>
           </motion.div>
         </div>
       </motion.section>
